@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="theme_color">#0082DA</color>
+    <color name="quan_off_txt">#D6D6D6</color>
+    <color name="message_bg">#EFEFEF</color>
+    <color name="tint_blue">#77C7FA</color>
+</resources>
