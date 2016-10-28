@@ -8,21 +8,22 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.house.checkhouse.R;
+import com.house.checkhouse.model.message.ProblemItem;
 import com.house.checkhouse.model.message.TaskItem;
 
 import java.util.ArrayList;
 
 /**
- * 任务与工作记录公用
+ * Created by 欢大哥 on 2016/10/27.
  */
-public class TaskItemAdapter extends BaseAdapter {
+public class ChangeItemAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<TaskItem> list;
-    public TaskItemAdapter(Context context){
+    private ArrayList<ProblemItem> list;
+    public ChangeItemAdapter(Context context){
         this.context = context;
     }
 
-    public void setData(ArrayList<TaskItem> list){
+    public void setData(ArrayList<ProblemItem> list){
         this.list = list;
         notifyDataSetChanged();
     }
@@ -43,13 +44,15 @@ public class TaskItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder;
+    public View getView(final int i, View view, ViewGroup viewGroup) {
+        final ViewHolder viewHolder;
         if (view == null){
             viewHolder = new ViewHolder();
-            view = LayoutInflater.from(context).inflate(R.layout.task_item_layout,null);
+            view = LayoutInflater.from(context).inflate(R.layout.problem_item_layout,null);
             viewHolder.title = (TextView) view.findViewById(R.id.title_task);
             viewHolder.content = (TextView) view.findViewById(R.id.content_task);
+            viewHolder.type = (TextView) view.findViewById(R.id.problem_type);
+            viewHolder.time = (TextView) view.findViewById(R.id.time_txt);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
@@ -57,13 +60,18 @@ public class TaskItemAdapter extends BaseAdapter {
         TaskItem item = (TaskItem) getItem(i);
         viewHolder.title.setText(item.getTitle());
         viewHolder.content.setText(item.getContent());
-
-
+        if (i == getCount()-1){
+            viewHolder.time.setVisibility(View.VISIBLE);
+        }else {
+            viewHolder.time.setVisibility(View.GONE);
+        }
         return view;
     }
 
     private class ViewHolder{
         TextView title;
         TextView content;
+        TextView type;
+        TextView time;
     }
 }

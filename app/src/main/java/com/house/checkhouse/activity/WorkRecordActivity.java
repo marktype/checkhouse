@@ -8,13 +8,13 @@ import android.support.v4.view.ViewPager;
 import com.house.checkhouse.BascActivity;
 import com.house.checkhouse.R;
 import com.house.checkhouse.adapter.MyPagerAdapter;
-import com.house.checkhouse.fragment.FinishTaskFragment;
-import com.house.checkhouse.fragment.WaitTaskFragment;
+import com.house.checkhouse.fragment.FinishRecordFragment;
+import com.house.checkhouse.fragment.WaitRecordFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskActivity extends BascActivity {
+public class WorkRecordActivity extends BascActivity {
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private List<String> mTitleList = new ArrayList<>();//页卡标题集合
@@ -22,10 +22,9 @@ public class TaskActivity extends BascActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task);
+        setContentView(R.layout.activity_work_record);
         initWidget();
     }
-
 
     private void initWidget(){
         mViewPager = (ViewPager) findViewById(R.id.vp_view);
@@ -36,12 +35,12 @@ public class TaskActivity extends BascActivity {
     private void initTab(){
 
         //添加页卡视图
-        mViewList.add(WaitTaskFragment.newInstance("",""));
-        mViewList.add(FinishTaskFragment.newInstance("",""));
+        mViewList.add(WaitRecordFragment.newInstance("",""));
+        mViewList.add(FinishRecordFragment.newInstance("",""));
 
 
         //添加页卡标题
-        mTitleList.add("待完成");
+        mTitleList.add("未完成");
         mTitleList.add("已完成");
 
 

@@ -18,7 +18,14 @@
         <activity android:name=".BascActivity" />
         <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.SignInActivity" />
-        <activity android:name=".activity.TaskActivity"></activity>
+        <activity android:name=".activity.TaskActivity" />
+        <activity android:name=".activity.ProblemActivity" />
+        <activity android:name=".activity.ChangeHouseActivity" />
+        <activity android:name=".activity.WorkRecordActivity" />
+        <activity android:name=".activity.HousesActivity" />
+        <activity android:name=".activity.AHousesActivity" />
+        <activity android:name=".activity.RidgepoleActivity" />
+        <activity android:name=".activity.BuildingHouseActivity"></activity>
     </application>
 
 </manifest>

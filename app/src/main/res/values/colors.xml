@@ -8,4 +8,7 @@
     <color name="quan_off_txt">#D6D6D6</color>
     <color name="message_bg">#EFEFEF</color>
     <color name="tint_blue">#77C7FA</color>
+    <color name="gray_red">#FC006D</color>
+    <color name="gray_green">#09D7B3</color>
+    <color name="gray_yellow">#EDBE00</color>
 </resources>

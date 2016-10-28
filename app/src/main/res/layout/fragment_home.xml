@@ -64,13 +64,14 @@
             android:layout_below="@id/company_name"></include>
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/word_record_layout"
         android:layout_width="match_parent"
         android:background="@android:color/white"
         android:layout_height="wrap_content">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/margin_10dp"
+            android:padding="@dimen/margin_15dp"
             android:layout_marginLeft="@dimen/margin_10dp"
             android:background="@drawable/button_blue_line"
             android:src="@mipmap/work_record"/>
@@ -78,9 +79,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:padding="@dimen/margin_10dp"
+            android:padding="@dimen/margin_15dp"
             android:src="@mipmap/gengduo"/>
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:background="@color/quan_off_txt"/>
     <ListView
         android:id="@+id/message_list"
         android:divider="@null"
@@ -94,6 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/loupan_img"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

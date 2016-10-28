@@ -10,10 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.house.checkhouse.R;
+import com.house.checkhouse.activity.ChangeHouseActivity;
+import com.house.checkhouse.activity.HousesActivity;
+import com.house.checkhouse.activity.ProblemActivity;
 import com.house.checkhouse.activity.SignInActivity;
 import com.house.checkhouse.activity.TaskActivity;
+import com.house.checkhouse.activity.WorkRecordActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -84,6 +89,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         CircleImageView mHeadImg = (CircleImageView) mView.findViewById(R.id.user_image);
         ImageView mSign = (ImageView) mView.findViewById(R.id.sign_in_img);
         LinearLayout mTask = (LinearLayout) mView.findViewById(R.id.task_layout);
+        LinearLayout mProblem = (LinearLayout) mView.findViewById(R.id.problem_layout);
+        LinearLayout mChange = (LinearLayout) mView.findViewById(R.id.change_layout);
+        RelativeLayout mWorkRecord = (RelativeLayout) mView.findViewById(R.id.word_record_layout);
+        ImageView mLouPan = (ImageView) mView.findViewById(R.id.loupan_img);
 
         Picasso.with(getContext()).load(R.mipmap.ic_launcher).into(mHeadImg);
 
@@ -92,6 +101,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         mSign.setOnClickListener(this);
         mTask.setOnClickListener(this);
+        mProblem.setOnClickListener(this);
+        mChange.setOnClickListener(this);
+        mWorkRecord.setOnClickListener(this);
+        mLouPan.setOnClickListener(this);
     }
 
     private ArrayList<String> setData(){
@@ -113,6 +126,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.task_layout:
                 intent = new Intent(getContext(), TaskActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.problem_layout:
+                intent = new Intent(getContext(), ProblemActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.change_layout:
+                intent = new Intent(getContext(), ChangeHouseActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.word_record_layout:
+                intent = new Intent(getContext(), WorkRecordActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.loupan_img:
+                intent = new Intent(getContext(), HousesActivity.class);
                 startActivity(intent);
                 break;
         }

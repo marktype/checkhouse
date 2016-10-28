@@ -8,25 +8,24 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.house.checkhouse.R;
-import com.house.checkhouse.model.message.TaskItem;
+import com.house.checkhouse.model.message.HousesInfo;
 
 import java.util.ArrayList;
 
 /**
- * 任务与工作记录公用
+ * Created by 欢大哥 on 2016/10/27.
  */
-public class TaskItemAdapter extends BaseAdapter {
+public class HouseGridViewAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<TaskItem> list;
-    public TaskItemAdapter(Context context){
+    private ArrayList<HousesInfo> list;
+    public HouseGridViewAdapter(Context context){
         this.context = context;
     }
 
-    public void setData(ArrayList<TaskItem> list){
+    public void setData(ArrayList<HousesInfo> list){
         this.list = list;
         notifyDataSetChanged();
     }
-
     @Override
     public int getCount() {
         return list.size();
@@ -46,24 +45,19 @@ public class TaskItemAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
         if (view == null){
+            view = LayoutInflater.from(context).inflate(R.layout.grid_view_item_layout,null);
             viewHolder = new ViewHolder();
-            view = LayoutInflater.from(context).inflate(R.layout.task_item_layout,null);
-            viewHolder.title = (TextView) view.findViewById(R.id.title_task);
-            viewHolder.content = (TextView) view.findViewById(R.id.content_task);
+            viewHolder.title = (TextView) view.findViewById(R.id.text_name);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        TaskItem item = (TaskItem) getItem(i);
-        viewHolder.title.setText(item.getTitle());
-        viewHolder.content.setText(item.getContent());
-
+        HousesInfo info= (HousesInfo) getItem(i);
+        viewHolder.title.setText(info.getName());
 
         return view;
     }
-
     private class ViewHolder{
         TextView title;
-        TextView content;
     }
 }

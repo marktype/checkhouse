@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.house.checkhouse.fragment.ProblemHouseTypeFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="指派"
+        android:background="@color/theme_color"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:id="@+id/zhipai_txt"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/margin_15dp"/>
+    <ListView
+        android:layout_above="@id/zhipai_txt"
+        android:id="@+id/problem_time_list"
+        android:divider="@null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

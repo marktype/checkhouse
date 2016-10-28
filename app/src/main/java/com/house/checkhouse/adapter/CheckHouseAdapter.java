@@ -8,25 +8,24 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.house.checkhouse.R;
-import com.house.checkhouse.model.message.TaskItem;
+import com.house.checkhouse.customer.MyGridView;
+import com.house.checkhouse.model.message.CheckHouseInfo;
 
 import java.util.ArrayList;
 
 /**
- * 任务与工作记录公用
+ * Created by 欢大哥 on 2016/10/27.
  */
-public class TaskItemAdapter extends BaseAdapter {
+public class CheckHouseAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<TaskItem> list;
-    public TaskItemAdapter(Context context){
+    private ArrayList<CheckHouseInfo> list;
+    public CheckHouseAdapter(Context context){
         this.context = context;
     }
-
-    public void setData(ArrayList<TaskItem> list){
+    public void setData(ArrayList<CheckHouseInfo> list){
         this.list = list;
         notifyDataSetChanged();
     }
-
     @Override
     public int getCount() {
         return list.size();
@@ -46,24 +45,27 @@ public class TaskItemAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
         if (view == null){
+            view = LayoutInflater.from(context).inflate(R.layout.check_list_layout,null);
             viewHolder = new ViewHolder();
-            view = LayoutInflater.from(context).inflate(R.layout.task_item_layout,null);
-            viewHolder.title = (TextView) view.findViewById(R.id.title_task);
-            viewHolder.content = (TextView) view.findViewById(R.id.content_task);
+            viewHolder.num = (TextView) view.findViewById(R.id.building_num);
+            viewHolder.gridView = (MyGridView) view.findViewById(R.id.loupan_grid);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        TaskItem item = (TaskItem) getItem(i);
-        viewHolder.title.setText(item.getTitle());
-        viewHolder.content.setText(item.getContent());
 
+        CheckHouseInfo info = (CheckHouseInfo) getItem(i);
+        viewHolder.num.setText(info.getNum());
+        HouseGridViewAdapter adapter = new HouseGridViewAdapter(context);
+        adapter.setData(info.getList());
+        viewHolder.gridView.setAdapter(adapter);
 
         return view;
     }
 
     private class ViewHolder{
-        TextView title;
-        TextView content;
+        TextView num;
+        MyGridView gridView;
     }
+
 }
