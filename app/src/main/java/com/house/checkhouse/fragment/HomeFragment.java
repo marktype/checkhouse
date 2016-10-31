@@ -93,6 +93,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         LinearLayout mChange = (LinearLayout) mView.findViewById(R.id.change_layout);
         RelativeLayout mWorkRecord = (RelativeLayout) mView.findViewById(R.id.word_record_layout);
         ImageView mLouPan = (ImageView) mView.findViewById(R.id.loupan_img);
+        ImageView mShilei = (ImageView) mView.findViewById(R.id.shilei_img);
 
         Picasso.with(getContext()).load(R.mipmap.ic_launcher).into(mHeadImg);
 
@@ -105,6 +106,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         mChange.setOnClickListener(this);
         mWorkRecord.setOnClickListener(this);
         mLouPan.setOnClickListener(this);
+        mShilei.setOnClickListener(this);
     }
 
     private ArrayList<String> setData(){
@@ -143,6 +145,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.loupan_img:
                 intent = new Intent(getContext(), HousesActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.shilei_img:
+
                 break;
         }
     }
