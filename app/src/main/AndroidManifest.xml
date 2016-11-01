@@ -27,7 +27,10 @@
         <activity android:name=".activity.RidgepoleActivity" />
         <activity android:name=".activity.BuildingHouseActivity" />
         <activity android:name=".activity.ZhiPaiActivity" />
-        <activity android:name=".activity.ProblemDetialActivity"></activity>
+        <activity android:name=".activity.ProblemDetialActivity" />
+        <activity android:name=".activity.CheckModelActivity" />
+        <activity android:name=".activity.CheckDetialActivity" />
+        <activity android:name=".activity.AddProblemActivity"></activity>
     </application>
 
 </manifest>

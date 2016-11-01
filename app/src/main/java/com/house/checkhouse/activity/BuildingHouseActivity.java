@@ -27,7 +27,6 @@ public class BuildingHouseActivity extends BascActivity {
         adapter.setData(setData());
 
         mList.setAdapter(adapter);
-
     }
 
     public ArrayList<CheckHouseInfo> setData(){
@@ -49,6 +48,5 @@ public class BuildingHouseActivity extends BascActivity {
         }
         return list;
     }
-
 
 }

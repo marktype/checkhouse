@@ -23,6 +23,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 指派单位
+ */
 public class ZhiPaiActivity extends BascActivity {
     private ListView sortListView;
     private SideBar sideBar;

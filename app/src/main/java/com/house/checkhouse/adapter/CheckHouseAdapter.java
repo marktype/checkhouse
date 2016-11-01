@@ -1,13 +1,16 @@
 package com.house.checkhouse.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.house.checkhouse.R;
+import com.house.checkhouse.activity.CheckModelActivity;
 import com.house.checkhouse.customer.MyGridView;
 import com.house.checkhouse.model.message.CheckHouseInfo;
 
@@ -54,11 +57,20 @@ public class CheckHouseAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        CheckHouseInfo info = (CheckHouseInfo) getItem(i);
+        final CheckHouseInfo info = (CheckHouseInfo) getItem(i);
         viewHolder.num.setText(info.getNum());
         HouseGridViewAdapter adapter = new HouseGridViewAdapter(context);
         adapter.setData(info.getList());
         viewHolder.gridView.setAdapter(adapter);
+
+        viewHolder.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(context,CheckModelActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
 
         return view;
     }
