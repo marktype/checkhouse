@@ -1,13 +1,17 @@
 package com.house.checkhouse.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.house.checkhouse.R;
+import com.house.checkhouse.activity.FinishDetialActivity;
+import com.house.checkhouse.activity.WaitTaskDetialActivity;
 import com.house.checkhouse.customer.MyListView;
 import com.house.checkhouse.model.message.TaskInfo;
 
@@ -54,10 +58,25 @@ public class TaskAdapter extends BaseAdapter {
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        TaskInfo info = (TaskInfo) getItem(i);
+        final TaskInfo info = (TaskInfo) getItem(i);
         TaskItemAdapter adapter = new TaskItemAdapter(context);
         adapter.setData(info.getListTask());
         viewHolder.listView.setAdapter(adapter);
+        viewHolder.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (info.getType() == 1){
+                    Intent intent = new Intent(context, FinishDetialActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }else {
+                    Intent intent = new Intent(context, WaitTaskDetialActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            }
+        });
+
 
         viewHolder.time.setText(info.getTime());
 

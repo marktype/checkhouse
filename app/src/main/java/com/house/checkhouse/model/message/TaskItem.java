@@ -7,6 +7,15 @@ public class TaskItem {
 
     private String title;
     private String content;
+//    private int itemType;  // 0 未完成   1已完成
+//
+//    public int getItemType() {
+//        return itemType;
+//    }
+//
+//    public void setItemType(int itemType) {
+//        this.itemType = itemType;
+//    }
 
     public String getTitle() {
         return title;

@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.house.checkhouse.R;
+import com.house.checkhouse.activity.AddProblemActivity;
 import com.house.checkhouse.activity.ChangeHouseActivity;
 import com.house.checkhouse.activity.HousesActivity;
 import com.house.checkhouse.activity.ProblemActivity;
@@ -147,7 +148,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.shilei_img:
-
+                intent = new Intent(getContext(), AddProblemActivity.class);
+                startActivity(intent);
                 break;
         }
     }

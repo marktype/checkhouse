@@ -8,6 +8,15 @@ import java.util.ArrayList;
 public class TaskInfo {
     private String time;
     private ArrayList<TaskItem> listTask;
+    private int type;    //0未完成   1 已完成
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public String getTime() {
         return time;

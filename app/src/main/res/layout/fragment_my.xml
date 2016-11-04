@@ -14,6 +14,7 @@
         android:gravity="center"
         />
     <RelativeLayout
+        android:id="@+id/alter_password_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_15dp"
@@ -38,6 +39,7 @@
         android:layout_height="1px"
         android:background="@color/quan_off_txt"/>
     <RelativeLayout
+        android:id="@+id/clean_data_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_15dp"
@@ -58,6 +60,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/above_own_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_15dp"
@@ -82,6 +85,7 @@
         android:layout_height="1px"
         android:background="@color/quan_off_txt"/>
     <RelativeLayout
+        android:id="@+id/service_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_15dp"
@@ -105,6 +109,7 @@
         android:layout_height="1px"
         android:background="@color/quan_off_txt"/>
     <RelativeLayout
+        android:id="@+id/zhengce_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_15dp"
@@ -125,6 +130,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/exit_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_15dp"

@@ -1,14 +1,17 @@
 package com.house.checkhouse.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.house.checkhouse.R;
+import com.house.checkhouse.activity.WaitTaskDetialActivity;
 import com.house.checkhouse.adapter.ProjectAdapter;
 import com.house.checkhouse.model.message.ProjectInfo;
 
@@ -19,7 +22,7 @@ import java.util.ArrayList;
  * Use the {@link ProjectFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProjectFragment extends Fragment {
+public class ProjectFragment extends Fragment implements AdapterView.OnItemClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -79,6 +82,7 @@ public class ProjectFragment extends Fragment {
         adapter.setData(setData());
         mList.setAdapter(adapter);
 
+        mList.setOnItemClickListener(this);
     }
 
     private ArrayList<ProjectInfo> setData(){
@@ -94,4 +98,9 @@ public class ProjectFragment extends Fragment {
         return list;
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(getContext(), WaitTaskDetialActivity.class);
+        startActivity(intent);
+    }
 }

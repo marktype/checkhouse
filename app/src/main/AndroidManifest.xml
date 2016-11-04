@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.house.checkhouse">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,7 +33,14 @@
         <activity android:name=".activity.ProblemDetialActivity" />
         <activity android:name=".activity.CheckModelActivity" />
         <activity android:name=".activity.CheckDetialActivity" />
-        <activity android:name=".activity.AddProblemActivity"></activity>
+        <activity android:name=".activity.AddProblemActivity" />
+        <activity android:name=".activity.CheckDetialItemActivity" />
+        <activity android:name=".activity.AddWorkRecordActivity" />
+        <activity android:name=".activity.WaitTaskDetialActivity" />
+        <activity android:name=".activity.FinishDetialActivity" />
+        <activity android:name=".activity.AlterPasswordActivity" />
+        <activity android:name=".activity.WebDetialActivity"/>
+        <activity android:name=".activity.SecondActivity"></activity>
     </application>
 
 </manifest>

@@ -6,8 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.house.checkhouse.R;
+import com.house.checkhouse.adapter.TaskAdapter;
+import com.house.checkhouse.model.message.TaskInfo;
+import com.house.checkhouse.model.message.TaskItem;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +29,7 @@ public class FinishTaskFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private View mView;
 
 
     public FinishTaskFragment() {
@@ -59,8 +66,39 @@ public class FinishTaskFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_finish_task, container, false);
+        if (mView == null){
+            mView = inflater.inflate(R.layout.fragment_finish_task, container, false);
+            initWidget();
+        }
+        return mView;
+    }
+
+    private void initWidget(){
+        ListView mList = (ListView) mView.findViewById(R.id.wait_task_list);
+
+        TaskAdapter adapter = new TaskAdapter(getContext());
+        adapter.setData(setData());
+        mList.setAdapter(adapter);
+
+    }
+
+    private ArrayList<TaskInfo> setData(){
+        ArrayList<TaskInfo> list = new ArrayList<>();
+        for (int i = 0;i<2;i++){
+            TaskInfo info = new TaskInfo();
+            info.setTime("2016-10-2"+i);
+            ArrayList<TaskItem> itemList = new ArrayList<>();
+            for (int j = 0;j<4;j++){
+                TaskItem item = new TaskItem();
+                item.setTitle("xxxx小区可以查看xxx");
+                item.setContent("**验收");
+                itemList.add(item);
+            }
+            info.setListTask(itemList);
+            info.setType(1);
+            list.add(info);
+        }
+        return list;
     }
 
 }

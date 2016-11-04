@@ -3,6 +3,7 @@ package com.house.checkhouse.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,7 +15,7 @@ import com.house.checkhouse.model.message.HousesInfo;
 
 import java.util.ArrayList;
 
-public class CheckDetialActivity extends BascActivity implements View.OnClickListener{
+public class CheckDetialActivity extends BascActivity implements View.OnClickListener,AdapterView.OnItemClickListener{
     private ImageView mStatus,mBuWei;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
         mStatus.setOnClickListener(this);
         mBuWei.setOnClickListener(this);
         mNewProblem.setOnClickListener(this);
+        mList.setOnItemClickListener(this);
     }
 
     public ArrayList<HousesInfo> setData(){
@@ -93,5 +95,11 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
         zhunagtaiFlag = false;
         }
         mStatus.setImageResource(R.mipmap.zhuangtai);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(this,CheckDetialItemActivity.class);
+        startActivity(intent);
     }
 }
