@@ -2,14 +2,13 @@ package com.house.checkhouse;
 
 import android.annotation.TargetApi;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
-public class BascActivity extends AppCompatActivity {
+public class BascActivity extends BaseMethodActivity {
     protected SystemBarTintManager tintManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
