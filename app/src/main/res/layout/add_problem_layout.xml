@@ -130,12 +130,15 @@
                     android:text="验收标准不超过10cm，现场操作不超过目测茶瓯哦给现代哈森打开"
                     android:textColor="@android:color/darker_gray"
                     android:layout_marginLeft="@dimen/margin_20dp"/>
-                <LinearLayout
-                    android:id="@+id/image_lin"
+                <ScrollView
+                    android:layout_width="match_parent"
                     android:layout_toRightOf="@+id/miaoshu"
                     android:layout_below="@id/content_txt"
                     android:layout_marginLeft="@dimen/margin_20dp"
                     android:layout_marginTop="@dimen/margin_10dp"
+                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/image_lin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -144,6 +147,7 @@
                         android:layout_height="52dp"
                         android:src="@mipmap/camera"/>
                 </LinearLayout>
+                </ScrollView>
             </RelativeLayout>
 
             <LinearLayout

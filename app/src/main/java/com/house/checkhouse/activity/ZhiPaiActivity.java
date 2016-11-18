@@ -1,5 +1,6 @@
 package com.house.checkhouse.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -8,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.house.checkhouse.BascActivity;
 import com.house.checkhouse.R;
@@ -82,7 +82,11 @@ public class ZhiPaiActivity extends BascActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 //这里要利用adapter.getItem(position)来获取当前position所对应的对象
-                Toast.makeText(getApplication(), ((SortModel)adapter.getItem(position)).getName(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplication(), ((SortModel)adapter.getItem(position)).getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = getIntent();
+                intent.putExtra(ZhiPaiInfoActivity.COMAPNY_NAME, ((SortModel)adapter.getItem(position)).getName());
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
 

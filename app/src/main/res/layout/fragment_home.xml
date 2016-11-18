@@ -9,22 +9,22 @@
         android:layout_width="match_parent"
         android:background="@color/theme_color"
         android:layout_height="@dimen/title_height">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@android:color/white"
-            android:gravity="center"
-            android:drawablePadding="@dimen/margin_10dp"
-            android:drawableRight="@mipmap/down_img"
-            android:padding="@dimen/margin_10dp"
-            android:text="成华区"/>
         <ImageView
             android:id="@+id/sign_in_img"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@mipmap/qiandao"
             android:padding="@dimen/margin_10dp"
-            android:layout_alignParentRight="true"/>
+            />
+        <ImageView
+            android:id="@+id/uploading_img"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@android:color/white"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/uploading"
+            android:padding="@dimen/margin_10dp"
+           />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -111,11 +111,12 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/shilei"/>
+            android:src="@mipmap/yuyanfang"/>
         <ImageView
+            android:id="@+id/jiaofangpeiyan_img"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/gongqu"/>
+            android:src="@mipmap/jiaofangpeiyan"/>
     </LinearLayout>
 </LinearLayout>

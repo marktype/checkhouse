@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+   >
     <RelativeLayout
         android:layout_width="match_parent"
         android:background="@color/theme_color"
@@ -19,23 +19,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="问题"
+            android:text="签到历史"
             android:textColor="@android:color/white"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabIndicatorColor="@color/theme_color"
-        app:tabSelectedTextColor="@color/theme_color"
-        app:tabTextColor="@android:color/darker_gray"/>
 
-    <!--可滑动的布局内容-->
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_view"
-        android:background="@color/message_bg"
+    <ListView
+        android:id="@+id/sign_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"></ListView>
+
 
 </LinearLayout>

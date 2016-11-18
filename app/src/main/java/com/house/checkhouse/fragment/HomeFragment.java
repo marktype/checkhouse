@@ -13,11 +13,11 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.house.checkhouse.R;
-import com.house.checkhouse.activity.AddProblemActivity;
 import com.house.checkhouse.activity.ChangeHouseActivity;
 import com.house.checkhouse.activity.HousesActivity;
+import com.house.checkhouse.activity.LocationSignInActivity;
+import com.house.checkhouse.activity.MyUploadingActivity;
 import com.house.checkhouse.activity.ProblemActivity;
-import com.house.checkhouse.activity.SignInActivity;
 import com.house.checkhouse.activity.TaskActivity;
 import com.house.checkhouse.activity.WorkRecordActivity;
 import com.squareup.picasso.Picasso;
@@ -95,6 +95,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         RelativeLayout mWorkRecord = (RelativeLayout) mView.findViewById(R.id.word_record_layout);
         ImageView mLouPan = (ImageView) mView.findViewById(R.id.loupan_img);
         ImageView mShilei = (ImageView) mView.findViewById(R.id.shilei_img);
+        ImageView mUpLoading = (ImageView) mView.findViewById(R.id.uploading_img);
+        ImageView mJiaoFangPeiYan = (ImageView) mView.findViewById(R.id.jiaofangpeiyan_img);
+
 
         Picasso.with(getContext()).load(R.mipmap.ic_launcher).into(mHeadImg);
 
@@ -108,6 +111,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         mWorkRecord.setOnClickListener(this);
         mLouPan.setOnClickListener(this);
         mShilei.setOnClickListener(this);
+        mUpLoading.setOnClickListener(this);
+        mJiaoFangPeiYan.setOnClickListener(this);
     }
 
     private ArrayList<String> setData(){
@@ -124,7 +129,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.sign_in_img:
-                Intent intent = new Intent(getContext(), SignInActivity.class);
+                Intent intent = new Intent(getContext(), LocationSignInActivity.class);
                 startActivity(intent);
                 break;
             case R.id.task_layout:
@@ -145,12 +150,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.loupan_img:
                 intent = new Intent(getContext(), HousesActivity.class);
+                intent.putExtra(HousesActivity.TITLE_NAME,"楼盘");
                 startActivity(intent);
                 break;
             case R.id.shilei_img:
-                intent = new Intent(getContext(), AddProblemActivity.class);
+                intent = new Intent(getContext(), HousesActivity.class);
+                intent.putExtra(HousesActivity.TITLE_NAME,"预验房");
                 startActivity(intent);
                 break;
+            case R.id.jiaofangpeiyan_img:
+                intent = new Intent(getContext(), HousesActivity.class);
+                intent.putExtra(HousesActivity.TITLE_NAME,"交房陪验");
+                startActivity(intent);
+                break;
+            case R.id.uploading_img:
+                intent = new Intent(getContext(), MyUploadingActivity.class);
+                startActivity(intent);
+                break;
+
+
         }
     }
 }

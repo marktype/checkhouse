@@ -1,11 +1,16 @@
 package com.house.checkhouse.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.house.checkhouse.BascActivity;
@@ -17,6 +22,8 @@ import java.util.ArrayList;
 
 public class CheckDetialActivity extends BascActivity implements View.OnClickListener,AdapterView.OnItemClickListener{
     private ImageView mStatus,mBuWei;
+    private PopupWindow mPopProWindow;
+    private ImageView mBgTxt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +36,7 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
         mStatus = (ImageView) findViewById(R.id.zhuangtai_txt);
         mBuWei = (ImageView) findViewById(R.id.buwei_txt);
         TextView mNewProblem = (TextView) findViewById(R.id.add_problem_txt);
+        mBgTxt = (ImageView) findViewById(R.id.bg_txt);
 
 
         CheckItemAdapter adapter = new CheckItemAdapter(this);
@@ -57,9 +65,11 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
         switch (view.getId()){
             case R.id.zhuangtai_txt:
                     isOpenStatus();
+                getPopWindow(mStatus,setStatusList());
                 break;
             case R.id.buwei_txt:
                     isOpenBuwei();
+                getPopWindow(mBuWei,setBuweiList());
                 break;
             case R.id.add_problem_txt:
                 Intent intent = new Intent(this,AddProblemActivity.class);
@@ -67,9 +77,11 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
                 break;
         }
     }
+
+    /**
+     * 状态
+     */
     private Boolean zhunagtaiFlag = false,buweiFlag = false;
-
-
     public void isOpenStatus(){
         if (zhunagtaiFlag){
             mStatus.setImageResource(R.mipmap.zhuangtai);
@@ -83,6 +95,10 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
         }
         mBuWei.setImageResource(R.mipmap.buwei);
     }
+
+    /**
+     * 部位
+     */
     public void isOpenBuwei(){
         if (buweiFlag){
             mBuWei.setImageResource(R.mipmap.buwei);
@@ -95,6 +111,7 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
         zhunagtaiFlag = false;
         }
         mStatus.setImageResource(R.mipmap.zhuangtai);
+
     }
 
     @Override
@@ -102,4 +119,73 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
         Intent intent = new Intent(this,CheckDetialItemActivity.class);
         startActivity(intent);
     }
+
+    private ArrayList<String> setStatusList(){
+        ArrayList<String> statusList = new ArrayList<>();
+        statusList.add("全部");
+        statusList.add("待检验");
+        statusList.add("待指派");
+        statusList.add("待修复");
+        statusList.add("待销项");
+        return statusList;
+    }
+    private ArrayList<String> setBuweiList(){
+        ArrayList<String> buweiList = new ArrayList<>();
+        buweiList.add("全部");
+        buweiList.add("主卧");
+        buweiList.add("次卧室1");
+        buweiList.add("次卧室2");
+        buweiList.add("客厅");
+        buweiList.add("厨房");
+        buweiList.add("卫生间");
+       return buweiList;
+    }
+    /**
+     * 状态部位弹框
+     * @param view
+     * @param listItem
+     */
+    private void getPopWindow(View view,ArrayList<String> listItem) {
+        View contentView = LayoutInflater.from(this).inflate(R.layout.popwindow_check_layout, null);
+
+        /**
+         * 如果pop是null就执行这个方法
+         */
+        if (mPopProWindow == null) {
+            mPopProWindow = new PopupWindow(contentView,
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            //        实例化一个ColorDrawable颜色为半透明
+            ColorDrawable dw = new ColorDrawable(0xb0000000);
+            //设置SelectPicPopupWindow弹出窗体的背景
+            mPopProWindow.setBackgroundDrawable(dw);
+//            mPopProWindow.setOutsideTouchable(true);
+//            mPopProWindow.setAnimationStyle(R.style.mypopwindow_anim_style);
+        }
+        ListView listView = (ListView) contentView.findViewById(R.id.pop_list);
+        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.txt_more_item_layout, listItem);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mPopProWindow.dismiss();
+                mBgTxt.setVisibility(View.GONE);
+                mPopProWindow = null;
+            }
+        });
+
+            /**
+             * 显示就消失
+             */
+            if (mPopProWindow.isShowing()) {
+                mPopProWindow.dismiss();
+                mBgTxt.setVisibility(View.GONE);
+                mPopProWindow = null;
+            } else {
+                mBgTxt.setVisibility(View.VISIBLE);
+                mPopProWindow.showAsDropDown(view,0,0);  //设置layout在PopupWindow中显示的位置
+            }
+        }
+
 }

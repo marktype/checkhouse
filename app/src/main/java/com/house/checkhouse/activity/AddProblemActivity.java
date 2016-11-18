@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.house.checkhouse.BascActivity;
 import com.house.checkhouse.R;
 import com.house.checkhouse.model.message.ImageInfo;
+import com.house.checkhouse.util.Logs;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -66,6 +67,7 @@ public class AddProblemActivity extends BascActivity implements View.OnClickList
             case R.id.add_img:
                 showChangeBgDialog();
                 break;
+
         }
     }
 
@@ -82,7 +84,13 @@ public class AddProblemActivity extends BascActivity implements View.OnClickList
                     return;
                 }
                 img.setImageBitmap(bitmapList.get(i));
-
+                img.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(AddProblemActivity.this,ImageContentActivity.class);
+                        startActivity(intent);
+                    }
+                });
             }
             mLinImg.addView(img, size - 1);
 
@@ -165,6 +173,8 @@ public class AddProblemActivity extends BascActivity implements View.OnClickList
                 return;
             }
             Bundle bundle = data.getExtras();
+            Uri contentUri = data.getData();
+            Logs.d("contentUri-----"+contentUri);
 
             if (bundle != null){
                 Bitmap bitmap = bundle.getParcelable("data");

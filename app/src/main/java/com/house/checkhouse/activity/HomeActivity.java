@@ -1,5 +1,9 @@
 package com.house.checkhouse.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.text.TextUtils;
@@ -15,15 +19,38 @@ import com.house.checkhouse.fragment.MessageFragment;
 import com.house.checkhouse.fragment.MyFragment;
 
 public class HomeActivity extends BascActivity {
-
+    public static final String IS_CLOSE = "close";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        initBroadCast();
         initTab();
     }
 
+    private void initBroadCast(){
+        //也可以用这种方法动态注册多个，说明我可以”接收“这么多的动态广播。
+        IntentFilter intentFilter= new IntentFilter();
+        intentFilter.addAction(IS_CLOSE);
+        registerReceiver(isClose,intentFilter);
+    }
+
+    // 接收动态注册广播的BroadcastReceiver
+    private BroadcastReceiver isClose = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // TODO Auto-generated method stub
+            finish();
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isClose != null){
+            unregisterReceiver(isClose);
+        }
+    }
 
     //自定义tab
     public View setTabMenu(String name, int image) {

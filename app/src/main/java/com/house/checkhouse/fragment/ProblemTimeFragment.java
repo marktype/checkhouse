@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.house.checkhouse.R;
-import com.house.checkhouse.activity.ZhiPaiActivity;
+import com.house.checkhouse.activity.ZhiPaiInfoActivity;
 import com.house.checkhouse.adapter.ProblemAdapter;
 import com.house.checkhouse.model.message.ProblemInfo;
 import com.house.checkhouse.model.message.ProblemItem;
@@ -141,7 +141,7 @@ public class ProblemTimeFragment extends Fragment implements OnClickListener{
                 adapter.notifyDataSetChanged();
                 break;
             case R.id.zhipai_go:
-                Intent intent = new Intent(getContext(), ZhiPaiActivity.class);
+                Intent intent = new Intent(getContext(), ZhiPaiInfoActivity.class);
                 startActivity(intent);
                 break;
         }

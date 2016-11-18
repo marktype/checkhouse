@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.house.checkhouse.BascActivity;
 import com.house.checkhouse.R;
@@ -14,7 +15,7 @@ import com.house.checkhouse.model.message.HousesInfo;
 import java.util.ArrayList;
 
 public class HousesActivity extends BascActivity implements AdapterView.OnItemClickListener{
-
+    public static final String TITLE_NAME="titlename";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,10 @@ public class HousesActivity extends BascActivity implements AdapterView.OnItemCl
 
     private void initWidget(){
         GridView mGrid = (GridView) findViewById(R.id.loupan_grid);
+        TextView mTitleName = (TextView) findViewById(R.id.title_name);
+        String name = getIntent().getStringExtra(TITLE_NAME);
+        mTitleName.setText(name);
+
         HouseGridViewAdapter adapter = new HouseGridViewAdapter(this);
         adapter.setData(setData());
         mGrid.setAdapter(adapter);

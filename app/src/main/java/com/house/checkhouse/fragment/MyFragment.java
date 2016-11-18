@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.house.checkhouse.R;
 import com.house.checkhouse.activity.AlterPasswordActivity;
+import com.house.checkhouse.activity.HomeActivity;
 import com.house.checkhouse.activity.WebDetialActivity;
 import com.house.checkhouse.customer.CustomDialog;
 import com.house.checkhouse.util.DataCleanManager;
@@ -160,6 +161,9 @@ public class MyFragment extends Fragment implements View.OnClickListener{
 //                Intent intent = new Intent(getContext(),LoginActivity.class);
 //                startActivity(intent);
                 dialog.dismiss();
+                Intent intent = new Intent();
+                intent.setAction(HomeActivity.IS_CLOSE);
+                getContext().sendBroadcast(intent);
             }
         });
         dialog.setOnNegativeListener(new View.OnClickListener() {
