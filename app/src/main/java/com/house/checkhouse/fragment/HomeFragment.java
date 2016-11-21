@@ -1,6 +1,7 @@
 package com.house.checkhouse.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.house.checkhouse.activity.MyUploadingActivity;
 import com.house.checkhouse.activity.ProblemActivity;
 import com.house.checkhouse.activity.TaskActivity;
 import com.house.checkhouse.activity.WorkRecordActivity;
+import com.house.checkhouse.util.SaveUserInfoSharePreference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -149,16 +151,26 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.loupan_img:
+                //保存验房状态
+                SharedPreferences.Editor editor = SaveUserInfoSharePreference.getShareSaveUserInfo(getContext()).edit();
+                editor.putString(SaveUserInfoSharePreference.HOUSE_STATUS,"1");
+                editor.commit();
                 intent = new Intent(getContext(), HousesActivity.class);
                 intent.putExtra(HousesActivity.TITLE_NAME,"楼盘");
                 startActivity(intent);
                 break;
             case R.id.shilei_img:
+                editor = SaveUserInfoSharePreference.getShareSaveUserInfo(getContext()).edit();
+                editor.putString(SaveUserInfoSharePreference.HOUSE_STATUS,"2");
+                editor.commit();
                 intent = new Intent(getContext(), HousesActivity.class);
                 intent.putExtra(HousesActivity.TITLE_NAME,"预验房");
                 startActivity(intent);
                 break;
             case R.id.jiaofangpeiyan_img:
+                editor = SaveUserInfoSharePreference.getShareSaveUserInfo(getContext()).edit();
+                editor.putString(SaveUserInfoSharePreference.HOUSE_STATUS,"3");
+                editor.commit();
                 intent = new Intent(getContext(), HousesActivity.class);
                 intent.putExtra(HousesActivity.TITLE_NAME,"交房陪验");
                 startActivity(intent);

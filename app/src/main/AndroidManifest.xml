@@ -46,7 +46,8 @@
         <activity android:name=".activity.LocationSignInActivity" />
         <activity android:name=".activity.SignHistoryActivity" />
         <activity android:name=".activity.MyUploadingActivity" />
-        <activity android:name=".activity.ZhiPaiInfoActivity"></activity>
+        <activity android:name=".activity.ZhiPaiInfoActivity"/>
+        <activity android:name=".activity.ImageContentActivity"></activity>
     </application>
 
 </manifest>

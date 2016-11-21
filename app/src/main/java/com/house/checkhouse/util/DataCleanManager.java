@@ -75,16 +75,34 @@ public class DataCleanManager {
     }
 
     /**
+     * 删除文件夹下的文件及文件夹
+     * @param path
+     */
+    public static void deleteAllFilesOfDir(File path) {
+        if (!path.exists())
+            return;
+        if (path.isFile()) {
+            path.delete();
+            return;
+        }
+        File[] files = path.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            deleteAllFilesOfDir(files[i]);
+        }
+        path.delete();
+    }
+
+    /**
      * 清除缓存数据
      */
     public static void cleanCacheData(Context context){
-        cleanInternalCache(context);
-        cleanExternalCache(context);
+//        cleanInternalCache(context);
+//        cleanExternalCache(context);
         cleanDatabases(context);
         cleanFiles(context);
-//        File file = new File(Environment.getExternalStorageDirectory() +"/catInfo.txt");
-//        if (file.exists()){
-//            file.delete();
-//        }
+        File file = new File(Environment.getExternalStorageDirectory()+File.separator+"com.house");   //图片保存uri地址
+        if (file.exists()){
+            deleteAllFilesOfDir(file);
+        }
     }
 }

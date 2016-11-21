@@ -52,6 +52,7 @@ public class CheckHouseAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.num = (TextView) view.findViewById(R.id.building_num);
             viewHolder.gridView = (MyGridView) view.findViewById(R.id.loupan_grid);
+            viewHolder.publicTxt = (TextView) view.findViewById(R.id.public_text_name);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
@@ -59,6 +60,7 @@ public class CheckHouseAdapter extends BaseAdapter {
 
         final CheckHouseInfo info = (CheckHouseInfo) getItem(i);
         viewHolder.num.setText(info.getNum());
+        viewHolder.publicTxt.setText(info.getNum()+"标准层公区");
         HouseGridViewAdapter adapter = new HouseGridViewAdapter(context);
         adapter.setData(info.getList());
         viewHolder.gridView.setAdapter(adapter);
@@ -77,6 +79,7 @@ public class CheckHouseAdapter extends BaseAdapter {
 
     private class ViewHolder{
         TextView num;
+        TextView publicTxt;
         MyGridView gridView;
     }
 

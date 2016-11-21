@@ -5,7 +5,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,7 +21,7 @@ import android.widget.Toast;
 import com.house.checkhouse.BascActivity;
 import com.house.checkhouse.R;
 import com.house.checkhouse.model.message.ImageInfo;
-import com.house.checkhouse.util.Logs;
+import com.house.checkhouse.util.MethodUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,7 +41,8 @@ public class AddProblemActivity extends BascActivity implements View.OnClickList
     private String localTempImgFileName;
     private String localTempImgDir = "com.stock";
     private LinearLayout mLinImg;
-    private ArrayList<Bitmap> bitmapList = new ArrayList<Bitmap>();
+    private ArrayList<Bitmap> bitmapList = new ArrayList<Bitmap>();   //图片bitmap
+    private ArrayList<String> stringList = new ArrayList<String>();   //保存图片路径
     private ImageView mAddImg;
     private ArrayList<String> list = new ArrayList<>();
     @Override
@@ -88,6 +88,7 @@ public class AddProblemActivity extends BascActivity implements View.OnClickList
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(AddProblemActivity.this,ImageContentActivity.class);
+                        intent.putStringArrayListExtra("aa",stringList);
                         startActivity(intent);
                     }
                 });
@@ -160,7 +161,7 @@ public class AddProblemActivity extends BascActivity implements View.OnClickList
             if (data != null){
                 Uri contentUri = data.getData();
                 Bitmap bitmap = getBitmapFromUri(contentUri);
-                bitmap = reduce(bitmap, 480, 480, true);
+                bitmap = reduce(bitmap, 300, 300, true);
 
                 ImageInfo imageInfo = new ImageInfo();
                 imageInfo.setBitmap(bitmap);
@@ -173,9 +174,6 @@ public class AddProblemActivity extends BascActivity implements View.OnClickList
                 return;
             }
             Bundle bundle = data.getExtras();
-            Uri contentUri = data.getData();
-            Logs.d("contentUri-----"+contentUri);
-
             if (bundle != null){
                 Bitmap bitmap = bundle.getParcelable("data");
                 ImageInfo imageInfo = new ImageInfo();
@@ -183,14 +181,13 @@ public class AddProblemActivity extends BascActivity implements View.OnClickList
                 Intent intent = new Intent(this,SecondActivity.class);
                 intent.putExtra("image",imageInfo);
                 startActivityForResult(intent,REQUST_CODE_IMAGE);
-//                if (!bitmapList.contains(bitmap)) {
-//                    bitmapList.add(bitmap);
-//                }
-//                initAddMorePicture();
             }
         }else if (requestCode == REQUST_CODE_IMAGE){
             String fileUri = data.getStringExtra(SecondActivity.IMAGE);
-            Bitmap bitmap = readSdPic(fileUri);
+            if (!stringList.contains(bitmapList)){
+                stringList.add(fileUri);
+            }
+            Bitmap bitmap = MethodUtils.readSdPic(fileUri);
             if (!bitmapList.contains(bitmap)) {
                 bitmapList.add(bitmap);
             }
@@ -291,15 +288,15 @@ public class AddProblemActivity extends BascActivity implements View.OnClickList
         return uri;
     }
 
-    /**
-     * 读取文件
-     */
-    public Bitmap readSdPic(String fileUri){
-        Log.d("tag","fileUri---"+fileUri);
-        File file = new File(fileUri);
-        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-        return bitmap;
-    }
+//    /**
+//     * 读取文件
+//     */
+//    public Bitmap readSdPic(String fileUri){
+//        Log.d("tag","fileUri---"+fileUri);
+//        File file = new File(fileUri);
+//        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+//        return bitmap;
+//    }
 
     @Override
     protected void onDestroy() {

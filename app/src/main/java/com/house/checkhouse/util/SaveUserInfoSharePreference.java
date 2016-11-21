@@ -29,7 +29,8 @@ public class SaveUserInfoSharePreference {
     public static final String USER_ID = "uid";       //用户id
     public static final String USER_LATAING = "lating";     //纬度
     public static final String USER_LONTITIDE = "lontitude";    //经度
-    public static final String USER_POSITION = "position";    //用户职业   （检验人员，施工单位，房产公司）
+    public static final String USER_POSITION = "position";    //用户职业   （1检验人员，2施工单位，3房产公司）
+    public static final String HOUSE_STATUS = "status";    //楼盘状态   （1楼盘，2预验房，3交房陪验）
 
     public static SharedPreferences getShareSaveUserInfo(Context context){
         if (user == null){

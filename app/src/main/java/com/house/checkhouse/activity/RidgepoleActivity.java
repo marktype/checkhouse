@@ -13,6 +13,9 @@ import com.house.checkhouse.model.message.HousesInfo;
 
 import java.util.ArrayList;
 
+/**
+ * 栋数
+ */
 public class RidgepoleActivity extends BascActivity implements AdapterView.OnItemClickListener{
 
     @Override

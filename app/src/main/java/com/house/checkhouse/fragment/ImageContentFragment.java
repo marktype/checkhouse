@@ -1,6 +1,7 @@
 package com.house.checkhouse.fragment;
 
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,8 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.house.checkhouse.R;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
+import com.house.checkhouse.util.MethodUtils;
 
 
 public class ImageContentFragment extends Fragment {
@@ -50,20 +50,20 @@ public class ImageContentFragment extends Fragment {
         mText = (TextView) v.findViewById(R.id.image_item_content);
         mProgress = (ProgressBar) v.findViewById(R.id.Image_progress_img);
         mImageNumTxt = (TextView) v.findViewById(R.id.image_content_num);
-
         mImageNumTxt.setText(mImageNum);
-
-        Picasso.with(getActivity()).load(mMessage).into(mImage, new Callback() {
-            @Override
-            public void onSuccess() {
-                mProgress.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
+        Bitmap bitmap = MethodUtils.readSdPic(mMessage);
+        mImage.setImageBitmap(bitmap);
+//        Picasso.with(getActivity()).load(mMessage).into(mImage, new Callback() {
+//            @Override
+//            public void onSuccess() {
+//                mProgress.setVisibility(View.GONE);
+//            }
+//
+//            @Override
+//            public void onError() {
+//
+//            }
+//        });
         mText.setText(mContent);
 
         return v;

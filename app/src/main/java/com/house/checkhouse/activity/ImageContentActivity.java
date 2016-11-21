@@ -21,11 +21,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ImageContentActivity extends FragmentActivity {
-    private String url = "http://api.sina.cn/sinago/article.json?postt=hdpic_hdpic_toutiao_4&wm=b207&from=6042095012&chwm=12050_0001&oldchwm=12050_0001&imei=867064013906290&uid=802909da86d9f5fc&id=";
     private ViewPager mViewPager;
     private ImageFragmentAdatper adapter;
     private TextView mTitle;
     private ImageView mBackImage;
+    private ArrayList<String> stringlist;
 //    private TextView mImageNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +42,8 @@ public class ImageContentActivity extends FragmentActivity {
 
 
         Intent intent = getIntent();
-//        String urlId = intent.getStringExtra("urlId");
-//        urlId = url+urlId;
-//        connetImageGetStr(urlId);
+        stringlist = intent.getStringArrayListExtra("aa");
+        adapter.setDataFragmentList(parseImageData(stringlist));
 
         mBackImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +121,14 @@ public class ImageContentActivity extends FragmentActivity {
 //        });
 //
 //    }
+
+    public ArrayList<Fragment> parseImageData(ArrayList<String> str) {
+        ArrayList<Fragment> list = new ArrayList<Fragment>();
+        for (int i = 0;i<str.size();i++){
+            list.add(ImageContentFragment.newInstance(str.get(i),"",str.size()+""));
+        }
+        return list;
+    }
 
     public ArrayList<Fragment> parseImageData(String str) {
 

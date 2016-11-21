@@ -18,6 +18,7 @@ import android.widget.ImageView;
 
 import com.house.checkhouse.R;
 import com.house.checkhouse.model.message.ImageInfo;
+import com.house.checkhouse.util.Logs;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -138,9 +139,14 @@ public class SecondActivity extends Activity {
 	 * @return
      */
 	public String getNowFileName(){
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");//格式大小写有区别
+		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmss");//格式大小写有区别
 		String sysDatetime = fmt.format(Calendar.getInstance().getTime());//2016年02月25日  13:23:40
-		String fileName = Environment.getExternalStorageDirectory()+File.separator+"com.house"+File.separator+sysDatetime+".png";
+		String fileName = Environment.getExternalStorageDirectory()+File.separator+"com.house"+File.separator+"check"+sysDatetime+".png";
+		Logs.d("fileName-----"+fileName);
+		File file = new File(Environment.getExternalStorageDirectory()+File.separator+"com.house");
+		if (!file.exists()){
+			file.mkdir();
+		}
 		return fileName;
 	}
 
