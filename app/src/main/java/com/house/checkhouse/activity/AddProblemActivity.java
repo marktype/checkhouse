@@ -37,14 +37,12 @@ public class AddProblemActivity extends BascActivity implements View.OnClickList
     public static int REQUST_CODE_IMAGE = 10;
     private String mPictureFile, filePath;
     private Uri fileUri;//通过此uri得到本地图片,设置为背景
-//    private String localTempImgFileName = "bankgroup.jpg";
     private String localTempImgFileName;
     private String localTempImgDir = "com.stock";
     private LinearLayout mLinImg;
     private ArrayList<Bitmap> bitmapList = new ArrayList<Bitmap>();   //图片bitmap
     private ArrayList<String> stringList = new ArrayList<String>();   //保存图片路径
     private ImageView mAddImg;
-    private ArrayList<String> list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -288,15 +286,6 @@ public class AddProblemActivity extends BascActivity implements View.OnClickList
         return uri;
     }
 
-//    /**
-//     * 读取文件
-//     */
-//    public Bitmap readSdPic(String fileUri){
-//        Log.d("tag","fileUri---"+fileUri);
-//        File file = new File(fileUri);
-//        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-//        return bitmap;
-//    }
 
     @Override
     protected void onDestroy() {

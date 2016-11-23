@@ -46,8 +46,12 @@
         <activity android:name=".activity.LocationSignInActivity" />
         <activity android:name=".activity.SignHistoryActivity" />
         <activity android:name=".activity.MyUploadingActivity" />
-        <activity android:name=".activity.ZhiPaiInfoActivity"/>
-        <activity android:name=".activity.ImageContentActivity"></activity>
+        <activity android:name=".activity.ZhiPaiInfoActivity" />
+        <activity android:name=".activity.ImageContentActivity" />
+        <activity android:name=".activity.PrepareAddProblemActivity" />
+        <activity android:name=".activity.PrepareDetialProblemActivity" />
+        <activity android:name=".activity.PayDetialActivity"/>
+        <activity android:name=".activity.SignNameActivity"></activity>
     </application>
 
 </manifest>

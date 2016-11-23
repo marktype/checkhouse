@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,14 +17,12 @@ import android.widget.ImageView;
 
 import com.house.checkhouse.R;
 import com.house.checkhouse.model.message.ImageInfo;
-import com.house.checkhouse.util.Logs;
+import com.house.checkhouse.util.MethodUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class SecondActivity extends Activity {
 	public static final String IMAGE = "images";
@@ -44,7 +41,7 @@ public class SecondActivity extends Activity {
 		setContentView(R.layout.activity_second);
 		imageInfo = getIntent().getParcelableExtra("image");
 
-		fileUri = getNowFileName();
+		fileUri = MethodUtils.getNowFileName();
 
 		mBitmap = imageInfo.getBitmap();
 		nowBitmap = mBitmap;
@@ -134,21 +131,21 @@ public class SecondActivity extends Activity {
 
 	}
 
-	/**
-	 * 获取文件路径和名字
-	 * @return
-     */
-	public String getNowFileName(){
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmss");//格式大小写有区别
-		String sysDatetime = fmt.format(Calendar.getInstance().getTime());//2016年02月25日  13:23:40
-		String fileName = Environment.getExternalStorageDirectory()+File.separator+"com.house"+File.separator+"check"+sysDatetime+".png";
-		Logs.d("fileName-----"+fileName);
-		File file = new File(Environment.getExternalStorageDirectory()+File.separator+"com.house");
-		if (!file.exists()){
-			file.mkdir();
-		}
-		return fileName;
-	}
+//	/**
+//	 * 获取文件路径和名字
+//	 * @return
+//     */
+//	public String getNowFileName(){
+//		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmss");//格式大小写有区别
+//		String sysDatetime = fmt.format(Calendar.getInstance().getTime());//2016年02月25日  13:23:40
+//		String fileName = Environment.getExternalStorageDirectory()+File.separator+"com.house"+File.separator+"check"+sysDatetime+".png";
+//		Logs.d("fileName-----"+fileName);
+//		File file = new File(Environment.getExternalStorageDirectory()+File.separator+"com.house");
+//		if (!file.exists()){
+//			file.mkdir();
+//		}
+//		return fileName;
+//	}
 
 	 public void setmBitmap(){
 

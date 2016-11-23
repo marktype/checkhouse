@@ -86,6 +86,7 @@ public class BuildingHouseActivity extends BascActivity implements View.OnClickL
         for (int i = 0;i<3;i++){
             CheckHouseInfo info = new CheckHouseInfo();
             info.setNum("2"+i+"F");
+            info.setType(type);
             ArrayList<HousesInfo> infoList = new ArrayList<>();
             for (int j = 0;j<6;j++){
                 HousesInfo housesInfo = new HousesInfo();

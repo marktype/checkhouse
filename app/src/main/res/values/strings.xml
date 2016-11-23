@@ -5,4 +5,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="uploading_hint">当前为2G/3G/4G网络，连接wi-fi后自动上传</string>
+    <string name="add_detial_txt">添加描述</string>
+
 </resources>
