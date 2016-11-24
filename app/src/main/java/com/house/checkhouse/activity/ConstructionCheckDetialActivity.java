@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.house.checkhouse.BascActivity;
 import com.house.checkhouse.R;
@@ -21,17 +20,16 @@ import com.house.checkhouse.model.message.HousesInfo;
 import java.util.ArrayList;
 
 /**
- * 检验人员检查详细列表
+ * 施工单位和房产公司检查详细列表
  */
-
-public class CheckDetialActivity extends BascActivity implements View.OnClickListener,AdapterView.OnItemClickListener{
+public class ConstructionCheckDetialActivity extends BascActivity implements View.OnClickListener,AdapterView.OnItemClickListener{
     private ImageView mStatus,mBuWei;
     private PopupWindow mPopProWindow;
     private ImageView mBgTxt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check_detial);
+        setContentView(R.layout.activity_construction_check_detial);
         initWidget();
     }
 
@@ -39,7 +37,6 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
         ListView mList = (ListView) findViewById(R.id.list_houses);
         mStatus = (ImageView) findViewById(R.id.zhuangtai_txt);
         mBuWei = (ImageView) findViewById(R.id.buwei_txt);
-        TextView mNewProblem = (TextView) findViewById(R.id.add_problem_txt);
         mBgTxt = (ImageView) findViewById(R.id.bg_txt);
 
 
@@ -49,7 +46,6 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
 
         mStatus.setOnClickListener(this);
         mBuWei.setOnClickListener(this);
-        mNewProblem.setOnClickListener(this);
         mList.setOnItemClickListener(this);
     }
 
@@ -68,16 +64,12 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.zhuangtai_txt:
-                    isOpenStatus();
+                isOpenStatus();
                 getPopWindow(mStatus,setStatusList());
                 break;
             case R.id.buwei_txt:
-                    isOpenBuwei();
+                isOpenBuwei();
                 getPopWindow(mBuWei,setBuweiList());
-                break;
-            case R.id.add_problem_txt:
-                Intent intent = new Intent(this,AddProblemActivity.class);
-                startActivity(intent);
                 break;
         }
     }
@@ -95,7 +87,7 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
             zhunagtaiFlag = true;
         }
         if (buweiFlag){
-        buweiFlag = false;
+            buweiFlag = false;
         }
         mBuWei.setImageResource(R.mipmap.buwei);
     }
@@ -112,7 +104,7 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
             buweiFlag = true;
         }
         if (zhunagtaiFlag){
-        zhunagtaiFlag = false;
+            zhunagtaiFlag = false;
         }
         mStatus.setImageResource(R.mipmap.zhuangtai);
 
@@ -128,9 +120,9 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
         ArrayList<String> statusList = new ArrayList<>();
         statusList.add("全部");
         statusList.add("待检验");
-        statusList.add("待指派");
-        statusList.add("待修复");
-        statusList.add("待销项");
+        statusList.add("待整改");
+        statusList.add("已整改");
+        statusList.add("已通过");
         return statusList;
     }
     private ArrayList<String> setBuweiList(){
@@ -142,7 +134,7 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
         buweiList.add("客厅");
         buweiList.add("厨房");
         buweiList.add("卫生间");
-       return buweiList;
+        return buweiList;
     }
     /**
      * 状态部位弹框
@@ -177,17 +169,16 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
             }
         });
 
-            /**
-             * 显示就消失
-             */
-            if (mPopProWindow.isShowing()) {
-                mPopProWindow.dismiss();
-                mBgTxt.setVisibility(View.GONE);
-                mPopProWindow = null;
-            } else {
-                mBgTxt.setVisibility(View.VISIBLE);
-                mPopProWindow.showAsDropDown(view,0,0);  //设置layout在PopupWindow中显示的位置
-            }
+        /**
+         * 显示就消失
+         */
+        if (mPopProWindow.isShowing()) {
+            mPopProWindow.dismiss();
+            mBgTxt.setVisibility(View.GONE);
+            mPopProWindow = null;
+        } else {
+            mBgTxt.setVisibility(View.VISIBLE);
+            mPopProWindow.showAsDropDown(view,0,0);  //设置layout在PopupWindow中显示的位置
         }
-
+    }
 }

@@ -91,6 +91,7 @@
     <ListView
         android:id="@+id/message_list"
         android:divider="@null"
+        android:padding="@dimen/margin_5dp"
         android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -98,8 +99,9 @@
     <LinearLayout
         android:orientation="horizontal"
         android:padding="@dimen/margin_20dp"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <ImageView
             android:id="@+id/loupan_img"
             android:layout_weight="1"

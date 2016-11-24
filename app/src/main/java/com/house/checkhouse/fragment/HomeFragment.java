@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.house.checkhouse.R;
 import com.house.checkhouse.activity.ChangeHouseActivity;
@@ -21,6 +22,7 @@ import com.house.checkhouse.activity.MyUploadingActivity;
 import com.house.checkhouse.activity.ProblemActivity;
 import com.house.checkhouse.activity.TaskActivity;
 import com.house.checkhouse.activity.WorkRecordActivity;
+import com.house.checkhouse.util.CheckConstants;
 import com.house.checkhouse.util.SaveUserInfoSharePreference;
 import com.squareup.picasso.Picasso;
 
@@ -35,7 +37,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements View.OnClickListener{
+public class HomeFragment extends BaseFragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -45,6 +47,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private String mParam1;
     private String mParam2;
     private View mView;
+    private String mLoginType;   //登录类型
 
     public HomeFragment() {
         // Required empty public constructor
@@ -71,6 +74,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mLoginType = getLoginType();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -99,7 +103,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         ImageView mShilei = (ImageView) mView.findViewById(R.id.shilei_img);
         ImageView mUpLoading = (ImageView) mView.findViewById(R.id.uploading_img);
         ImageView mJiaoFangPeiYan = (ImageView) mView.findViewById(R.id.jiaofangpeiyan_img);
+        TextView mName = (TextView) mView.findViewById(R.id.user_name);
 
+
+        isHideImg(mSign);
+        isHideImg(mName);
 
         Picasso.with(getContext()).load(R.mipmap.ic_launcher).into(mHeadImg);
 
@@ -125,6 +133,24 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         list.add("4、XXXXXXX可复检");
         list.add("5、XXXXXXX可验房");
         return list;
+    }
+
+    /**
+     * 按钮控件是否隐藏
+     * @param imageView
+     */
+    private void isHideImg(View imageView){
+        switch (mLoginType){
+            case CheckConstants.LOGIN_ONE:
+                imageView.setVisibility(View.VISIBLE);
+                break;
+            case CheckConstants.LOGIN_TWO:
+                imageView.setVisibility(View.GONE);
+                break;
+            case CheckConstants.LOGIN_THREE:
+                imageView.setVisibility(View.GONE);
+                break;
+        }
     }
 
     @Override
@@ -179,8 +205,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 intent = new Intent(getContext(), MyUploadingActivity.class);
                 startActivity(intent);
                 break;
-
-
         }
     }
 }

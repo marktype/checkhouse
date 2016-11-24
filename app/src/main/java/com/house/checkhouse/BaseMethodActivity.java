@@ -16,6 +16,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.house.checkhouse.util.SaveUserInfoSharePreference;
+
 /**
  * Created by 欢大哥 on 2016/11/4.
  */
@@ -148,6 +150,13 @@ public class BaseMethodActivity extends AppCompatActivity {
             mInfoToast.setText(msg);
             mInfoToast.show();
         }
+    }
+
+    /**
+     * 获取登录类型（1检验人员，2施工单位，3房产公司）
+     */
+    protected String getLoginType(){
+        return SaveUserInfoSharePreference.getShareSaveUserInfo(this).getString(SaveUserInfoSharePreference.USER_POSITION,null);
     }
 
     //--------------------------------------------------------处理键盘事件--------------------------------------------------------------

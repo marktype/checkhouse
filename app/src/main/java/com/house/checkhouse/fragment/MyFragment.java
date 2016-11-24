@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.house.checkhouse.R;
@@ -14,6 +15,7 @@ import com.house.checkhouse.activity.AlterPasswordActivity;
 import com.house.checkhouse.activity.HomeActivity;
 import com.house.checkhouse.activity.WebDetialActivity;
 import com.house.checkhouse.customer.CustomDialog;
+import com.house.checkhouse.util.CheckConstants;
 import com.house.checkhouse.util.DataCleanManager;
 
 /**
@@ -23,7 +25,7 @@ import com.house.checkhouse.util.DataCleanManager;
  * Use the {@link MyFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyFragment extends Fragment implements View.OnClickListener{
+public class MyFragment extends BaseFragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,6 +65,7 @@ public class MyFragment extends Fragment implements View.OnClickListener{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -83,12 +86,34 @@ public class MyFragment extends Fragment implements View.OnClickListener{
         RelativeLayout mZhnengCe = (RelativeLayout) mView.findViewById(R.id.zhengce_layout);
         RelativeLayout mExit = (RelativeLayout) mView.findViewById(R.id.exit_layout);
 
+        TextView mLoginName = (TextView) mView.findViewById(R.id.login_name);
+
+
+        setLognName(mLoginName);
         mAlterPassword.setOnClickListener(this);
         mCleanData.setOnClickListener(this);
         mAbove.setOnClickListener(this);
         mService.setOnClickListener(this);
         mZhnengCe.setOnClickListener(this);
         mExit.setOnClickListener(this);
+    }
+
+    /**
+     * 登录人员名字
+     * @param txt
+     */
+    private void setLognName(TextView txt){
+        switch (getLoginType()){
+            case CheckConstants.LOGIN_ONE:
+                txt.setText("检验人员");
+                break;
+            case CheckConstants.LOGIN_TWO:
+                txt.setText("施工单位");
+                break;
+            case CheckConstants.LOGIN_THREE:
+                txt.setText("房产公司");
+                break;
+        }
     }
 
     @Override

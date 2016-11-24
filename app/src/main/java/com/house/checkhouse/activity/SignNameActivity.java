@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 
 import com.house.checkhouse.R;
+import com.house.checkhouse.util.CheckConstants;
 import com.house.checkhouse.util.MethodUtils;
 
 import java.io.File;
@@ -28,7 +30,7 @@ public class SignNameActivity extends Activity {
 	private Bitmap mBitmap;
 	private Canvas canvas;
 	private Paint paint;
-	private String fileUri;
+	private String fileUri,fileIntent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,14 @@ public class SignNameActivity extends Activity {
 		img = (ImageView) findViewById(R.id.img);
 		fileUri = MethodUtils.getNowFileName();
 
-		// 绘图
-		showImage();
+		fileIntent = getIntent().getStringExtra(CheckConstants.SIGN_IMAGE);
+		if (fileIntent != null&& !TextUtils.isEmpty(fileIntent)){
+			Bitmap bitmap = MethodUtils.readSdPic(fileIntent);
+			img.setImageBitmap(bitmap);
+		}else {
+			// 绘图
+			showImage();
+		}
 
 	}
 
@@ -95,7 +103,11 @@ public class SignNameActivity extends Activity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		System.gc();
-		setmBitmap();
+		if (mBitmap != null){
+			setmBitmap();
+		}else {
+			fileUri = fileIntent;
+		}
 		Intent intent = new Intent();
 		intent.putExtra(SecondActivity.IMAGE,fileUri);
 		setResult(RESULT_OK, intent);

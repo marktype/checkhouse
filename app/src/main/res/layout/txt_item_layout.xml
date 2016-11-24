@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:textSize="@dimen/content_min_text_size"
     android:paddingLeft="@dimen/margin_20dp"
+    android:paddingBottom="@dimen/margin_5dp"
     android:layout_height="wrap_content">
 
 

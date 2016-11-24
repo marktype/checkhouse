@@ -24,6 +24,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+/**
+ * 在图片上绘图
+ */
 public class SecondActivity extends Activity {
 	public static final String IMAGE = "images";
 	private ImageView img;

@@ -18,6 +18,7 @@ import com.house.checkhouse.R;
 import com.house.checkhouse.adapter.CheckHouseAdapter;
 import com.house.checkhouse.model.message.CheckHouseInfo;
 import com.house.checkhouse.model.message.HousesInfo;
+import com.house.checkhouse.util.CheckConstants;
 import com.house.checkhouse.util.SaveUserInfoSharePreference;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class BuildingHouseActivity extends BascActivity implements View.OnClickL
     private TextView mUnit;
     private SharedPreferences sp;
     private String type;   //
+    private TextView mRedTxt,mGreenTxt,mYellowTxt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +44,40 @@ public class BuildingHouseActivity extends BascActivity implements View.OnClickL
     private void initWidget(){
         ListView mList = (ListView) findViewById(R.id.list_houses);
         mUnit = (TextView) findViewById(R.id.unit_txt);
-        selectTitle();
-
+        mRedTxt = (TextView) findViewById(R.id.red_txt);
+        mGreenTxt = (TextView) findViewById(R.id.green_txt);
+        mYellowTxt = (TextView) findViewById(R.id.yellow_txt);
 
         CheckHouseAdapter adapter = new CheckHouseAdapter(this);
         adapter.setData(setData());
         mList.setAdapter(adapter);
 
+        setTitleName();
+        selectTitle();
         mUnit.setOnClickListener(this);
+    }
+
+    /**
+     *
+     */
+    private void setTitleName(){
+        switch (getLoginType()){
+            case CheckConstants.LOGIN_ONE:
+                mRedTxt.setText("待指派");
+                mGreenTxt.setText("待修复");
+                mYellowTxt.setText("待销项");
+                break;
+            case CheckConstants.LOGIN_TWO:
+                mRedTxt.setText("待整改");
+                mGreenTxt.setText("已整改");
+                mYellowTxt.setText("已通过");
+                break;
+            case CheckConstants.LOGIN_THREE:
+                mRedTxt.setText("待整改");
+                mGreenTxt.setText("已整改");
+                mYellowTxt.setText("已通过");
+                break;
+        }
     }
 
     /**
@@ -146,7 +174,6 @@ public class BuildingHouseActivity extends BascActivity implements View.OnClickL
             });
         }
         mPopWindow.setOutsideTouchable(true);
-//                mPopWindow.showAsDropDown(view, 100, 10);
         if (mPopWindow.isShowing()) {
             mPopWindow.dismiss();
         } else {

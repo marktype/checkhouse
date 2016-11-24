@@ -41,7 +41,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/darker_gray"
             android:text="新增类型"/>
         <TextView
             android:layout_width="match_parent"
@@ -65,7 +64,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/darker_gray"
                 android:text="标题"/>
             <EditText
                 android:background="@android:color/white"
@@ -88,12 +86,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/darker_gray"
             android:text="内容"/>
         <EditText
             android:background="@android:color/white"
             android:layout_marginTop="@dimen/margin_10dp"
            android:hint="请输入工作内容"
+            android:textColorHint="@android:color/darker_gray"
             android:gravity="start"
             android:textSize="@dimen/content_text_size"
             android:layout_width="match_parent"
@@ -112,13 +110,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/darker_gray"
+
             android:text="备注"/>
         <EditText
             android:background="@android:color/white"
             android:layout_marginTop="@dimen/margin_10dp"
             android:hint="如有备注，请输入"
             android:textSize="@dimen/content_text_size"
+            android:textColorHint="@android:color/darker_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

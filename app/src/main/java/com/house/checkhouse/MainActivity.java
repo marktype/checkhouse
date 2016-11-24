@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.house.checkhouse.activity.HomeActivity;
+import com.house.checkhouse.util.CheckConstants;
 import com.house.checkhouse.util.SaveUserInfoSharePreference;
 
 public class MainActivity extends BascActivity implements View.OnClickListener{
@@ -40,17 +41,17 @@ public class MainActivity extends BascActivity implements View.OnClickListener{
                 SharedPreferences.Editor editor = SaveUserInfoSharePreference.getShareSaveUserInfo(this).edit();
                 if (phone.equals("1")&&password.equals("1")){
                     showToast("检验人员登录成功");
-                    editor.putString(SaveUserInfoSharePreference.USER_POSITION,"1");
+                    editor.putString(SaveUserInfoSharePreference.USER_POSITION, CheckConstants.LOGIN_ONE);
                     Intent intent = new Intent(this, HomeActivity.class);
                     startActivity(intent);
                 }else if (phone.equals("2")&&password.equals("2")){
                     showToast("施工单位登录成功");
-                    editor.putString(SaveUserInfoSharePreference.USER_POSITION,"2");
+                    editor.putString(SaveUserInfoSharePreference.USER_POSITION,CheckConstants.LOGIN_TWO);
                     Intent intent = new Intent(this, HomeActivity.class);
                     startActivity(intent);
                 }else if (phone.equals("3")&&password.equals("3")){
                     showToast("房产公司登录成功");
-                    editor.putString(SaveUserInfoSharePreference.USER_POSITION,"3");
+                    editor.putString(SaveUserInfoSharePreference.USER_POSITION,CheckConstants.LOGIN_THREE);
                     Intent intent = new Intent(this, HomeActivity.class);
                     startActivity(intent);
                 }else {

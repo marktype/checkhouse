@@ -6,9 +6,11 @@ import android.graphics.Matrix;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.house.checkhouse.BascActivity;
 import com.house.checkhouse.R;
+import com.house.checkhouse.util.CheckConstants;
 import com.house.checkhouse.util.MethodUtils;
 
 import java.math.BigDecimal;
@@ -19,6 +21,8 @@ import java.math.BigDecimal;
 public class PayDetialActivity extends BascActivity implements View.OnClickListener{
     public static int REQUST_CODE_IMAGE = 1;
     private ImageView mSign;
+    private TextView mSignTxt;
+    private String fileUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,18 +31,44 @@ public class PayDetialActivity extends BascActivity implements View.OnClickListe
     }
 
     private void initWidget(){
-        mSign = (ImageView) findViewById(R.id.sign_name);
+        mSign = (ImageView) findViewById(R.id.sign_name_img);
 
+
+        mSignTxt = (TextView) findViewById(R.id.sign_name_txt);
         mSign.setOnClickListener(this);
+        mSignTxt.setOnClickListener(this);
+        isHideView();
     }
 
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.sign_name:
+            case R.id.sign_name_txt:
                 Intent intent = new Intent(this,SignNameActivity.class);
                 startActivityForResult(intent,REQUST_CODE_IMAGE);
+                break;
+            case R.id.sign_name_img:
+                intent = new Intent(this,SignNameActivity.class);
+                intent.putExtra(CheckConstants.SIGN_IMAGE,fileUri);
+                startActivityForResult(intent,REQUST_CODE_IMAGE);
+                break;
+        }
+    }
+
+    /**
+     * 是否显示签名文字
+     */
+    private void isHideView(){
+        switch (getLoginType()){
+            case CheckConstants.LOGIN_ONE:
+                mSignTxt.setVisibility(View.GONE);
+                break;
+            case CheckConstants.LOGIN_TWO:
+                mSignTxt.setVisibility(View.VISIBLE);
+                break;
+            case CheckConstants.LOGIN_THREE:
+                mSignTxt.setVisibility(View.GONE);
                 break;
         }
     }
@@ -46,10 +76,11 @@ public class PayDetialActivity extends BascActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
      if (requestCode == REQUST_CODE_IMAGE){
-            String fileUri = data.getStringExtra(SecondActivity.IMAGE);
-            Bitmap bitmap = MethodUtils.readSdPic(fileUri);
+         fileUri = data.getStringExtra(SecondActivity.IMAGE);
+         Bitmap bitmap = MethodUtils.readSdPic(fileUri);
          Bitmap map = reduce(bitmap,200,100,true);
-            mSign.setImageBitmap(map);
+         mSign.setImageBitmap(map);
+         mSignTxt.setVisibility(View.GONE);
         }
     }
 

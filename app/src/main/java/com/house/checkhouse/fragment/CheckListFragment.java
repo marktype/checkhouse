@@ -12,7 +12,9 @@ import android.widget.ListView;
 
 import com.house.checkhouse.R;
 import com.house.checkhouse.activity.CheckDetialActivity;
+import com.house.checkhouse.activity.ConstructionCheckDetialActivity;
 import com.house.checkhouse.adapter.ItemSelectAdapter;
+import com.house.checkhouse.util.CheckConstants;
 
 import java.util.ArrayList;
 
@@ -21,7 +23,7 @@ import java.util.ArrayList;
  * Use the {@link CheckListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CheckListFragment extends Fragment implements AdapterView.OnItemClickListener{
+public class CheckListFragment extends BaseFragment implements AdapterView.OnItemClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -94,7 +96,20 @@ public class CheckListFragment extends Fragment implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent = new Intent(getContext(), CheckDetialActivity.class);
-        startActivity(intent);
+        switch (getLoginType()){
+            case CheckConstants.LOGIN_ONE:
+                Intent intent = new Intent(getContext(), CheckDetialActivity.class);
+                startActivity(intent);
+                break;
+            case CheckConstants.LOGIN_TWO:
+                intent = new Intent(getContext(), ConstructionCheckDetialActivity.class);
+                startActivity(intent);
+                break;
+            case CheckConstants.LOGIN_THREE:
+                intent = new Intent(getContext(), ConstructionCheckDetialActivity.class);
+                startActivity(intent);
+                break;
+        }
+
     }
 }

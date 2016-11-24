@@ -50,8 +50,9 @@
         <activity android:name=".activity.ImageContentActivity" />
         <activity android:name=".activity.PrepareAddProblemActivity" />
         <activity android:name=".activity.PrepareDetialProblemActivity" />
-        <activity android:name=".activity.PayDetialActivity"/>
-        <activity android:name=".activity.SignNameActivity"></activity>
+        <activity android:name=".activity.PayDetialActivity" />
+        <activity android:name=".activity.SignNameActivity" />
+        <activity android:name=".activity.ConstructionCheckDetialActivity"></activity>
     </application>
 
 </manifest>
