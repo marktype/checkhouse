@@ -1,6 +1,7 @@
 package com.house.checkhouse.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.house.checkhouse.R;
+import com.house.checkhouse.activity.DevelopInfoActivity;
+import com.house.checkhouse.activity.ProjectInfoActivity;
+import com.house.checkhouse.activity.SystemInfoActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,10 +87,16 @@ public class MessageInfoFragment extends Fragment implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tool_lin:
+                Intent intent = new Intent(getContext(), ProjectInfoActivity.class);
+                startActivity(intent);
                 break;
             case R.id.platform_lin:
+                intent = new Intent(getContext(), SystemInfoActivity.class);
+                startActivity(intent);
                 break;
             case R.id.develop_lin:
+                intent = new Intent(getContext(), DevelopInfoActivity.class);
+                startActivity(intent);
                 break;
         }
     }

@@ -44,6 +44,7 @@
             android:drawablePadding="@dimen/margin_10dp"
             android:drawableLeft="@drawable/circle_gray_yellow_shape"/>
         <TextView
+            android:id="@+id/xiaoxiang_problem_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/gray_yellow"

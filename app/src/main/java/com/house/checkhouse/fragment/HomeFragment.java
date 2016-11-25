@@ -179,7 +179,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
             case R.id.loupan_img:
                 //保存验房状态
                 SharedPreferences.Editor editor = SaveUserInfoSharePreference.getShareSaveUserInfo(getContext()).edit();
-                editor.putString(SaveUserInfoSharePreference.HOUSE_STATUS,"1");
+                editor.putString(SaveUserInfoSharePreference.HOUSE_STATUS,CheckConstants.STATUS_ONE);
                 editor.commit();
                 intent = new Intent(getContext(), HousesActivity.class);
                 intent.putExtra(HousesActivity.TITLE_NAME,"楼盘");
@@ -187,7 +187,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
                 break;
             case R.id.shilei_img:
                 editor = SaveUserInfoSharePreference.getShareSaveUserInfo(getContext()).edit();
-                editor.putString(SaveUserInfoSharePreference.HOUSE_STATUS,"2");
+                editor.putString(SaveUserInfoSharePreference.HOUSE_STATUS,CheckConstants.STATUS_TWO);
                 editor.commit();
                 intent = new Intent(getContext(), HousesActivity.class);
                 intent.putExtra(HousesActivity.TITLE_NAME,"预验房");
@@ -195,7 +195,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
                 break;
             case R.id.jiaofangpeiyan_img:
                 editor = SaveUserInfoSharePreference.getShareSaveUserInfo(getContext()).edit();
-                editor.putString(SaveUserInfoSharePreference.HOUSE_STATUS,"3");
+                editor.putString(SaveUserInfoSharePreference.HOUSE_STATUS,CheckConstants.STATUS_THREE);
                 editor.commit();
                 intent = new Intent(getContext(), HousesActivity.class);
                 intent.putExtra(HousesActivity.TITLE_NAME,"交房陪验");

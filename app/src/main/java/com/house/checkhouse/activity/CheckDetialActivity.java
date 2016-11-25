@@ -1,6 +1,7 @@
 package com.house.checkhouse.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import com.house.checkhouse.BascActivity;
 import com.house.checkhouse.R;
 import com.house.checkhouse.adapter.CheckItemAdapter;
 import com.house.checkhouse.model.message.HousesInfo;
+import com.house.checkhouse.util.CheckConstants;
+import com.house.checkhouse.util.SaveUserInfoSharePreference;
 
 import java.util.ArrayList;
 
@@ -28,10 +31,14 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
     private ImageView mStatus,mBuWei;
     private PopupWindow mPopProWindow;
     private ImageView mBgTxt;
+    private SharedPreferences sp;
+    private String type;   //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_detial);
+        sp = SaveUserInfoSharePreference.getShareSaveUserInfo(this);
+        type = sp.getString(SaveUserInfoSharePreference.HOUSE_STATUS,null);
         initWidget();
     }
 
@@ -76,8 +83,18 @@ public class CheckDetialActivity extends BascActivity implements View.OnClickLis
                 getPopWindow(mBuWei,setBuweiList());
                 break;
             case R.id.add_problem_txt:
-                Intent intent = new Intent(this,AddProblemActivity.class);
-                startActivity(intent);
+                switch (type){
+                    case CheckConstants.STATUS_ONE:
+                        Intent intent = new Intent(this,AddProblemActivity.class);
+                        startActivity(intent);
+                        break;
+                    case CheckConstants.STATUS_TWO:
+                        intent = new Intent(this,PrepareAddProblemActivity.class);
+                        startActivity(intent);
+                        break;
+                    default:
+                        break;
+                }
                 break;
         }
     }

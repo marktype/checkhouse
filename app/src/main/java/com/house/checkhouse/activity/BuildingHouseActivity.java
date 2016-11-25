@@ -88,17 +88,17 @@ public class BuildingHouseActivity extends BascActivity implements View.OnClickL
         LinearLayout mYuyanFang = (LinearLayout) findViewById(R.id.yuyanfang_Lin);
         LinearLayout mJiaofuPeiyan = (LinearLayout) findViewById(R.id.jiaofupeiyan_Lin);
         switch (type){
-            case "1":
+            case CheckConstants.STATUS_ONE:
                 mLoupanLin.setVisibility(View.VISIBLE);
                 mYuyanFang.setVisibility(View.GONE);
                 mJiaofuPeiyan.setVisibility(View.GONE);
                 break;
-            case "2":
+            case CheckConstants.STATUS_TWO:
                 mLoupanLin.setVisibility(View.GONE);
                 mYuyanFang.setVisibility(View.VISIBLE);
                 mJiaofuPeiyan.setVisibility(View.GONE);
                 break;
-            case "3":
+            case CheckConstants.STATUS_THREE:
                 mLoupanLin.setVisibility(View.GONE);
                 mYuyanFang.setVisibility(View.GONE);
                 mJiaofuPeiyan.setVisibility(View.VISIBLE);

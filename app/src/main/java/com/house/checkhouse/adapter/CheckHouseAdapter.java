@@ -14,6 +14,7 @@ import com.house.checkhouse.activity.CheckModelActivity;
 import com.house.checkhouse.activity.PayDetialActivity;
 import com.house.checkhouse.customer.MyGridView;
 import com.house.checkhouse.model.message.CheckHouseInfo;
+import com.house.checkhouse.util.CheckConstants;
 
 import java.util.ArrayList;
 
@@ -69,7 +70,7 @@ public class CheckHouseAdapter extends BaseAdapter {
         viewHolder.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if ("3".equals(info.getType())){
+                if (CheckConstants.STATUS_THREE.equals(info.getType())){
                     Intent intent = new Intent(context,PayDetialActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);

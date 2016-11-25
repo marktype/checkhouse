@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clickable="true"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/margin_20dp"
+        android:background="@drawable/rect_write_shape"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:textSize="@dimen/content_text_size"
+            android:gravity="center"
+            android:text="销项问题"
+            android:textColor="@android:color/black"
+            android:visibility="visible" />
+        <RadioGroup
+            android:id="@+id/content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="通过"
+                    android:padding="@dimen/margin_10dp"
+                    android:button="@drawable/select_selector"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="不通过"
+                    android:padding="@dimen/margin_10dp"
+                    android:button="@drawable/select_selector"/>
+
+        </RadioGroup>
+        <EditText
+            android:id="@+id/problem_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:hint="添加问题描述"
+            android:textSize="@dimen/content_text_size"
+            android:padding="@dimen/margin_5dp"
+            android:textColorHint="@android:color/darker_gray"
+            android:background="@drawable/rect_circle_gray_shape"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/miaoshu"
+            android:layout_below="@id/content_txt"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/image_lin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/add_img"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:src="@mipmap/camera"/>
+            </LinearLayout>
+        </ScrollView>
+        <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+            android:layout_marginTop="@dimen/margin_10dp"
+        android:background="#ffd0d0d0" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/negativeButton"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/theme_color"
+                android:gravity="center"
+                android:text="取消" />
+            <TextView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:id="@+id/positiveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/theme_color"
+                android:gravity="center"
+                android:text="确认" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
