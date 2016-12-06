@@ -1,6 +1,7 @@
 package com.house.checkhouse;
 
 import android.annotation.TargetApi;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
@@ -13,6 +14,9 @@ public class BascActivity extends BaseMethodActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //凡是继承这个activity的都禁止横屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         //设置状态栏的颜色
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             setTranslucentStatus(true);
